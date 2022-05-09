@@ -2,7 +2,7 @@ namespace RoleplayGame
 {
     public class Armor
     {
-        public int DefenseValue
+        public int DefenseValue : IDefensiveItems
         {
             get
             {
