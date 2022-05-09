@@ -7,9 +7,9 @@ namespace RoleplayGame
     /// </summary>
     public interface ICharacter
     {
-        int BaseHealth {get; private set;}
-        int BaseDamage {get; private set;}
-        int BaseDefense {get; private set;}
+        int BaseHealth {get; set;}
+        int BaseDamage {get; set;}
+        int BaseDefense {get; set;}
         
         int Health {get; set; }
         int AttackValue {get; }
