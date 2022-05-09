@@ -7,6 +7,10 @@ namespace RoleplayGame
     /// </summary>
     public interface ICharacter
     {
+        public int BaseHealth {get; private set;}
+        public int BaseDamage {get; private set;}
+        public int BaseDefense {get; private set;}
+        
         int Health {get; set; }
         int AttackValue {get; }
 
