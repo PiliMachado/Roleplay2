@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Spell : IOffensiveItems, IDefensiveItems
+    public class Spell : IMageItems
     {
         public int AttackValue
         {
