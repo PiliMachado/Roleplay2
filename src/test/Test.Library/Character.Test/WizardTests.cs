@@ -12,7 +12,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void NoSpellsBookAttackValueTest()
+        public void NoSpellsBookAttackValueTest() // Testeamos que el calculo del ataque sin spellsbook, es decir, solo con staff sea el esperado.
         {
             Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
@@ -22,7 +22,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void WithSpellsBookAttackValueTest()
+        public void WithSpellsBookAttackValueTest() // Testeamos que el calculo del ataque con spellsbook, sea el esperado.
         {
             Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
@@ -37,7 +37,7 @@ namespace Test.Library
         }
         
         [Test]
-        public void NoSpellsBookDefenseValueTest()
+        public void NoSpellsBookDefenseValueTest() // Testeamos que le calculo de la defensa sin el spellbooks sea el esperado.
         {
             Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
@@ -47,7 +47,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void WithSpellsBookDefenseValueTest()
+        public void WithSpellsBookDefenseValueTest() // Testeamos que el calculo de la defensa de un wizard con spellsbook sea el esperado.
         {
             Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
@@ -62,7 +62,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void NoItemsWizardRecieveAttackTest()
+        public void NoItemsWizardRecieveAttackTest() // Testeamos que el wizard sin ningun item reciba un ataque y cambie su valor de vida de la forma esperada.
         {
             Wizard wizard = new Wizard("gandalf");
             wizard.ReceiveAttack(10);
@@ -71,7 +71,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void NoSpellsBookRecieveAttackTest()
+        public void NoSpellsBookRecieveAttackTest() // Testeamos que el wizard sin spellsbook pero con un item reciba un ataque y cambie su valor de vida de la forma esperada.
         {
             Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
@@ -82,7 +82,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void WithSpellsBookRecieveAttackTest()
+        public void WithSpellsBookRecieveAttackTest() // Testeamos que el wizard con spellsbook reciba un ataque y cambie su vida de la forma esperada.
         {
             Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
@@ -97,7 +97,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void CureTest()
+        public void CureTest() // Testeamos que un wizard se cure toda su Health al usar el metodo Cure.
         {
             Wizard wizard = new Wizard("gandalf");
             wizard.ReceiveAttack(50);
@@ -107,7 +107,18 @@ namespace Test.Library
         }
 
         [Test]
-        public void EquipAlreadyExistingItemTest()
+        public void EquipItemTest() // Testemos que un wizard pueda agregar un item a su lista de items.
+        {
+            Wizard wizard = new Wizard("gandalf");
+            IMageItem staff = new Staff();
+            wizard.EquipItem(staff);
+            List<IMageItem> expected = new List<IMageItem>{staff};
+            List<IMageItem> actual = wizard.Items;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void EquipAlreadyExistingItemTest() // Testemos que un wizard no pueda tener items repetidos en su lista de items.
         {
             Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
@@ -116,6 +127,26 @@ namespace Test.Library
             List<IMageItem> expected = new List<IMageItem>{staff};
             List<IMageItem> actual = wizard.Items;
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void UnequipNotEquippedItemTest() // Testemos que un wizard no pueda remover items que no tenga su lista de items. (Que no salte una excepcion)
+        {
+            Wizard wizard = new Wizard("gandalf");
+            IMageItem staff = new Staff();
+            wizard.UnequipItem(staff);
+            Assert.Pass();
+        }
+
+        [Test]
+        public void UnequipEquippedItemTest() // Testemos que un wizard pueda remover items que tenga su lista de items.
+        {
+            Wizard wizard = new Wizard("gandalf");
+            IMageItem staff = new Staff();
+            wizard.EquipItem(staff);
+            wizard.UnequipItem(staff);
+            List<IMageItem> expected = new List<IMageItem>();
+            Assert.AreEqual(expected, wizard.Items);
         }
     }
 }
