@@ -2,18 +2,18 @@ using System.Collections.Generic;
 
 namespace RoleplayGame
 {
-    public class SpellsBook : IMageItem
+    public class SpellsBook : IOffensiveItems, IDefensiveItems
     {
-        public ISpell[] Spells { get; set; }
+        public Spell[] Spells { get; set; }
         
         public int AttackValue
         {
             get
             {
                 int value = 0;
-                foreach (ISpell Spell in this.Spells)
+                foreach (Spell spell in this.Spells)
                 {
-                    value += Spell.AttackValue;
+                    value += spell.AttackValue;
                 }
                 return value;
             }
@@ -24,9 +24,9 @@ namespace RoleplayGame
             get
             {
                 int value = 0;
-                foreach (ISpell Spell in this.Spells)
+                foreach (Spell spell in this.Spells)
                 {
-                    value += Spell.DefenseValue;
+                    value += spell.DefenseValue;
                 }
                 return value;
             }

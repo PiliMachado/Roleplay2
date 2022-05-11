@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-
 namespace RoleplayGame
 {
-    public class Archer : ICharacter<IOffensiveItem>
+    public class Archer : ICharacter
     {
         private int health = 100;
 
@@ -13,32 +11,15 @@ namespace RoleplayGame
 
         public string Name { get; set; }
         
-        public List<IDefensiveItem> DefensiveItems { get; private set; } = new List<IDefensiveItem>();
-        public List<IOffensiveItem> OffensiveItems { get; private set; } = new List<IOffensiveItem>();
-        public void EquipItem(IDefensiveItem item)
-        {
-            if(!this.DefensiveItems.Contains(item))
-            {
-                this.DefensiveItems.Add(item);
-            }
-        }
-        public void EquipItem(IOffensiveItem item)
-        {
-            if(!this.OffensiveItems.Contains(item))
-            {
-                this.OffensiveItems.Add(item);
-            }
-        }
+        public Bow Bow { get; set; }
+
+        public Helmet Helmet { get; set; }
+
         public int AttackValue
         {
             get
             {
-                int totalAttack = 0;
-                foreach(IOffensiveItem item in this.OffensiveItems)
-                {
-                    totalAttack += item.AttackValue;
-                }
-                return totalAttack;
+                return Bow.AttackValue;
             }
         }
 
@@ -46,12 +27,7 @@ namespace RoleplayGame
         {
             get
             {
-                int totalDefense = 0;
-                foreach(IDefensiveItem item in this.DefensiveItems)
-                {
-                    totalDefense += item.DefenseValue;
-                }
-                return totalDefense;
+                return Helmet.DefenseValue;
             }
         }
 

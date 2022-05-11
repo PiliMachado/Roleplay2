@@ -8,7 +8,7 @@ namespace RoleplayGame
     /// correspondiente,pero no se podra equipar un item 
     /// defensivo.
     /// </summary>
-    public interface IOffensiveItem
+    public interface IOffensiveItems
     {
         int AttackValue {get;}
     }
