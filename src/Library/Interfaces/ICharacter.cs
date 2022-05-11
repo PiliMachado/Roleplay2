@@ -14,5 +14,6 @@ namespace RoleplayGame
         int DefenseValue {get; }
         void ReceiveAttack(int power);
         void Cure();
+        
     }
 }
