@@ -14,7 +14,7 @@ namespace Test.Library
         [Test]
         public void NoSpellsBookAttackValueTest()
         {
-            ICharacter<IMageItem> wizard = new Wizard("gandalf");
+            Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
             wizard.EquipItem(staff);
             int actual = wizard.AttackValue;
@@ -24,7 +24,7 @@ namespace Test.Library
         [Test]
         public void WithSpellsBookAttackValueTest()
         {
-            ICharacter<IMageItem> wizard = new Wizard("gandalf");
+            Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
             SpellsBook spellsBook = new SpellsBook();
             ISpell fireBall = new FireBall();
@@ -39,7 +39,7 @@ namespace Test.Library
         [Test]
         public void NoSpellsBookDefenseValueTest()
         {
-            ICharacter<IMageItem> wizard = new Wizard("gandalf");
+            Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
             wizard.EquipItem(staff);
             int actual = wizard.DefenseValue;
@@ -49,7 +49,7 @@ namespace Test.Library
         [Test]
         public void WithSpellsBookDefenseValueTest()
         {
-            ICharacter<IMageItem> wizard = new Wizard("gandalf");
+            Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
             SpellsBook spellsBook = new SpellsBook();
             ISpell fireBall = new FireBall();
@@ -64,7 +64,7 @@ namespace Test.Library
         [Test]
         public void NoItemsWizardRecieveAttackTest()
         {
-            ICharacter<IMageItem> wizard = new Wizard("gandalf");
+            Wizard wizard = new Wizard("gandalf");
             wizard.ReceiveAttack(10);
             int actual = wizard.Health;
             Assert.AreEqual(100 - 10, actual);
@@ -73,7 +73,7 @@ namespace Test.Library
         [Test]
         public void NoSpellsBookRecieveAttackTest()
         {
-            ICharacter<IMageItem> wizard = new Wizard("gandalf");
+            Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
             wizard.EquipItem(staff);
             wizard.ReceiveAttack(110);
@@ -84,7 +84,7 @@ namespace Test.Library
         [Test]
         public void WithSpellsBookRecieveAttackTest()
         {
-            ICharacter<IMageItem> wizard = new Wizard("gandalf");
+            Wizard wizard = new Wizard("gandalf");
             IMageItem staff = new Staff();
             SpellsBook spellsBook = new SpellsBook();
             ISpell fireBall = new FireBall();
@@ -99,7 +99,7 @@ namespace Test.Library
         [Test]
         public void CureTest()
         {
-            ICharacter<IMageItem> wizard = new Wizard("gandalf");
+            Wizard wizard = new Wizard("gandalf");
             wizard.ReceiveAttack(50);
             wizard.Cure();
             int actual = wizard.Health;

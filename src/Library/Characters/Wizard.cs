@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace RoleplayGame
 {
-    public class Wizard : ICharacter<IMageItem>
+    public class Wizard : ICharacter
     {
         private int health = 100;
 
