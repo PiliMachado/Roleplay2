@@ -28,6 +28,20 @@ namespace RoleplayGame
                 this.OffensiveItems.Add(item);
             }
         }
+        public void UnequipItem(IOffensiveItem item)
+        {
+            if(this.OffensiveItems.Contains(item))
+            {
+                this.OffensiveItems.Remove(item);
+            }
+        }
+        public void UnequipItem(IDefensiveItem item)
+        {
+            if(this.DefensiveItems.Contains(item))
+            {
+                this.DefensiveItems.Remove(item);
+            }
+        }
         public int AttackValue
         {
             get

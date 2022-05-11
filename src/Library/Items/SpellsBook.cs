@@ -2,6 +2,10 @@ using System.Collections.Generic;
 
 namespace RoleplayGame
 {
+    /// <summary>
+    /// El SpellsBook es una clase que implementa IMageItem, ya que este item es del tipo
+    /// magico que solo pueden usar los wizards.
+    /// </summary>
     public class SpellsBook : IMageItem
     {
         public ISpell[] Spells { get; set; }
