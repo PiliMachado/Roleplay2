@@ -11,7 +11,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void SingleSpellGetAttackValueTest()
+        public void SingleSpellGetAttackValueTest() // Testeamos que el ataque del spellbook se calcule correctamente con un unico spell.
         {
             SpellsBook spellsBook = new SpellsBook();
             ISpell fireBall = new FireBall();
@@ -21,7 +21,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void MultipleSpellsGetAttackValueTest()
+        public void MultipleSpellsGetAttackValueTest()  // Testeamos que el ataque del spellbook se calcule correctamente con varios spells.
         {
             SpellsBook spellsBook = new SpellsBook();
             ISpell fireBall = new FireBall();
@@ -33,7 +33,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void SingleSpellGetDefenseValueTest()
+        public void SingleSpellGetDefenseValueTest() // Testeamos que la defensa del spellbook se calcule correctamente con un unico spell.
         {
             SpellsBook spellsBook = new SpellsBook();
             ISpell fireBall = new FireBall();
@@ -43,7 +43,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void MultipleSpellsGetDefenseValueTest()
+        public void MultipleSpellsGetDefenseValueTest() // Testeamos que la defensa del spellbook se calcule correctamente con varios spells.
         {
             SpellsBook spellsBook = new SpellsBook();
             ISpell fireBall = new FireBall();

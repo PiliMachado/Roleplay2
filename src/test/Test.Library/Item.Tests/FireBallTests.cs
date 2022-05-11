@@ -11,7 +11,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void GetAttackValueTest()
+        public void GetAttackValueTest() // Testeamos que el attackvalue sea el valor fijo que tiene la clase FireBall.
         {
             ISpell fireBall = new FireBall();
             int actual = fireBall.AttackValue;
@@ -19,7 +19,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void GetDefenseValueTest()
+        public void GetDefenseValueTest() // Testeamos que el defensevalue sea el valor fijo que tiene la clase FireBall.
         {
             ISpell fireBall = new FireBall();
             int actual = fireBall.DefenseValue;

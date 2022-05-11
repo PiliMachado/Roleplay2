@@ -8,6 +8,12 @@ namespace RoleplayGame
     /// </summary>
     public class SpellsBook : IMageItem
     {
+        /// <summary>
+        /// Ahora en vez de depender de una clase Spell dependemos de una ISpell, para asi permitir
+        /// que existan varios spells unos distintos de otros en sus atributos, una explicacion mas 
+        /// extensa esta en ISpell.
+        /// </summary>
+        /// <value></value>
         public ISpell[] Spells { get; set; }
         
         public int AttackValue
