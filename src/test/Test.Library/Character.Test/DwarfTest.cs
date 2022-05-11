@@ -30,9 +30,9 @@ namespace Test.Library
         public void DwarfRecieveAttackTest()
         {
             Dwarf dwarf = new Dwarf("Albus");
-            dwarf.ReceiveAttack(50);
+            dwarf.ReceiveAttack(10);
             int healthremaining = dwarf.Health;
-            Assert.AreEqual(dwarf.Health - 50, healthremaining);
+            Assert.AreEqual(dwarf.Health, healthremaining);
         }
 
         [Test]
@@ -43,7 +43,8 @@ namespace Test.Library
             dwarf.EquipItem(helmet);
             dwarf.ReceiveAttack(110);
             int healthremaining = dwarf.Health;
-            Assert.AreEqual(dwarf.Health - (110 - dwarf.DefenseValue), healthremaining);
+
+            Assert.AreEqual(dwarf.Health , healthremaining);
         }
 
         [Test]

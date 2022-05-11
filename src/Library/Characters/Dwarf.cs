@@ -16,14 +16,14 @@ namespace RoleplayGame
         public List<IOffensiveItem> OffensiveItems { get; private set; } = new List<IOffensiveItem>();
         public void EquipItem(IDefensiveItem item)
         {
-            if(!this.DefensiveItems.Contains(item))
+            if (!this.DefensiveItems.Contains(item))
             {
                 this.DefensiveItems.Add(item);
             }
         }
         public void EquipItem(IOffensiveItem item)
         {
-            if(!this.OffensiveItems.Contains(item))
+            if (!this.OffensiveItems.Contains(item))
             {
                 this.OffensiveItems.Add(item);
             }
@@ -33,7 +33,7 @@ namespace RoleplayGame
             get
             {
                 int totalAttack = 0;
-                foreach(IOffensiveItem item in this.OffensiveItems)
+                foreach (IOffensiveItem item in this.OffensiveItems)
                 {
                     totalAttack += item.AttackValue;
                 }
@@ -46,7 +46,7 @@ namespace RoleplayGame
             get
             {
                 int totalDefense = 0;
-                foreach(IDefensiveItem item in this.DefensiveItems)
+                foreach (IDefensiveItem item in this.DefensiveItems)
                 {
                     totalDefense += item.DefenseValue;
                 }
