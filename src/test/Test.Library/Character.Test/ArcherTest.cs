@@ -9,6 +9,7 @@ namespace Test.Library
 
     public class DwarfTests
     {
+        /*
         [Test]
         public void BasicAttackTest() // Verificamos que el un ataque basico sin items se calcule correctamente.
         {
@@ -89,5 +90,6 @@ namespace Test.Library
             }
             Assert.AreEqual(Sword.Broken(), true);
         }
+        */
     }
 }

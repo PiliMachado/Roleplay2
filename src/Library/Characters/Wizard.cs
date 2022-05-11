@@ -1,6 +1,8 @@
+using System.Collections.Generic;
+
 namespace RoleplayGame
 {
-    public class Wizard : ICharacter
+    public class Wizard : ICharacter<IMageItem>
     {
         private int health = 100;
 
@@ -11,15 +13,25 @@ namespace RoleplayGame
 
         public string Name { get; set; }
 
-        public SpellsBook SpellsBook { get; set; }
+        public List<IMageItem> Items { get; set; } = new List<IMageItem>();
 
-        public Staff Staff { get; set; }
-
+        public void EquipItem(IMageItem item)
+        {
+            if(!this.Items.Contains(item))
+            {
+                this.Items.Add(item);
+            }
+        }
         public int AttackValue
         {
             get
             {
-                return SpellsBook.AttackValue + Staff.AttackValue;
+                int attackValue = 0;
+                foreach(IMageItem item in this.Items)
+                {
+                    attackValue += item.AttackValue;
+                }
+                return attackValue;
             }
         }
 
@@ -27,7 +39,12 @@ namespace RoleplayGame
         {
             get
             {
-                return SpellsBook.DefenseValue + Staff.DefenseValue;
+                int defenseValue = 0;
+                foreach(IMageItem item in this.Items)
+                {
+                    defenseValue += item.DefenseValue;
+                }
+                return defenseValue;
             }
         }
 
