@@ -11,7 +11,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void GetAttackValueTest()
+        public void GetAttackValueTest() // Testeamos que el attackvalue sea el valor fijo que tiene la clase Axe.
         {
             IOffensiveItem axe = new Axe();
             int actual = axe.AttackValue;
