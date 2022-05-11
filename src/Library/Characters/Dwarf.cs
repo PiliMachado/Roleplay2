@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Dwarf : ICharacter<IOffensiveItem>
+    public class Dwarf : ICharacter
     {
         private int health = 100;
 
