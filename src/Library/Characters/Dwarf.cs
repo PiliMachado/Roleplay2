@@ -1,6 +1,7 @@
+using System.Collections.Generic;
 namespace RoleplayGame
 {
-    public class Dwarf : ICharacter
+    public class Dwarf : ICharacter<IOffensiveItem>
     {
         private int health = 100;
 
@@ -11,17 +12,32 @@ namespace RoleplayGame
 
         public string Name { get; set; }
 
-        public Axe Axe { get; set; }
-
-        public Shield Shield { get; set; }
-
-        public Helmet Helmet { get; set; }
-
+        public List<IDefensiveItem> DefensiveItems { get; private set; } = new List<IDefensiveItem>();
+        public List<IOffensiveItem> OffensiveItems { get; private set; } = new List<IOffensiveItem>();
+        public void EquipItem(IDefensiveItem item)
+        {
+            if(!this.DefensiveItems.Contains(item))
+            {
+                this.DefensiveItems.Add(item);
+            }
+        }
+        public void EquipItem(IOffensiveItem item)
+        {
+            if(!this.OffensiveItems.Contains(item))
+            {
+                this.OffensiveItems.Add(item);
+            }
+        }
         public int AttackValue
         {
             get
             {
-                return Axe.AttackValue;
+                int totalAttack = 0;
+                foreach(IOffensiveItem item in this.OffensiveItems)
+                {
+                    totalAttack += item.AttackValue;
+                }
+                return totalAttack;
             }
         }
 
@@ -29,7 +45,12 @@ namespace RoleplayGame
         {
             get
             {
-                return Shield.DefenseValue + Helmet.DefenseValue;
+                int totalDefense = 0;
+                foreach(IDefensiveItem item in this.DefensiveItems)
+                {
+                    totalDefense += item.DefenseValue;
+                }
+                return totalDefense;
             }
         }
 

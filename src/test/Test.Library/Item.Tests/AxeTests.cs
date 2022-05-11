@@ -11,10 +11,11 @@ namespace Test.Library
         }
 
         [Test]
-        public void Test1()
+        public void GetAttackValueTest()
         {
             IOffensiveItem axe = new Axe();
-            Assert.Pass();
+            int actual = axe.AttackValue;
+            Assert.AreEqual(25, axe.AttackValue);
         }
     }
 }

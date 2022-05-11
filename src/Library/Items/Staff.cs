@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Staff : IMageItems
+    public class Staff : IMageItem
     {
         public int AttackValue 
         {
