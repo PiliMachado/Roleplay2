@@ -59,5 +59,26 @@ namespace Test.Library
             int healedhealth = knight.Health;
             Assert.AreEqual(100, healedhealth);
         }
+
+        [Test]
+        public void KnightEquipAnAlreadyEquippedItem() // Testeamos que no se puedan repetir items en la lista de items.
+        {
+            Knight Knight = new Knight("Blou");
+            IOffensiveItem Axe = new Axe();
+            Knight.EquipItem(Axe);
+            Knight.EquipItem(Axe);
+            List<IOffensiveItem> itemlist = new List<IOffensiveItem> { Axe };
+            List<IOffensiveItem> equipped = Knight.OffensiveItems;
+            Assert.AreEqual(itemlist, equipped);
+        }
+
+        [Test]
+        public void KnightRemoveUnEquippedItem() // Testeamos que no salte una excepcion al intentar de remover un item que no se encuentre en la lista de items.
+        {
+            Knight Knight = new Knight("Blou");
+            IOffensiveItem Axe = new Axe();
+            Knight.UnequipItem(Axe);
+            Assert.Pass();
+        }
     }
 }

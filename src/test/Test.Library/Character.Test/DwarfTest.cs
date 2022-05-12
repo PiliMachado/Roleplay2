@@ -7,7 +7,7 @@ namespace Test.Library
     public class DwarfTest
     {
         [Test]
-        public void DwarfAttackValueTest()
+        public void DwarfAttackValueTest() // Testeamos que se calcule el ataque de un personaje, como el ataque de sus items, que en este caso es uno solo.
         {
             Dwarf dwarf = new Dwarf("Albus");
             IOffensiveItem sword = new Sword();
@@ -17,7 +17,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void DwarfDefensiveValueTest()
+        public void DwarfDefensiveValueTest() // Testeamos que se calcule la defensa de un personaje, como el ataque de sus items, que en este caso es uno solo.
         {
             Dwarf dwarf = new Dwarf("Albus");
             IDefensiveItem helmet = new Helmet();
@@ -27,7 +27,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void DwarfRecieveAttackTest()
+        public void DwarfRecieveAttackTest() // Testeamos que al recibir un ataque un dwarf sin items pierda la vida segun la cantidad que se le paso a recieveattack como parametro.
         {
             Dwarf dwarf = new Dwarf("Albus");
             dwarf.ReceiveAttack(50);
@@ -36,7 +36,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void DwarfWhitItemRecieveAttackTest()
+        public void DwarfWhitItemRecieveAttackTest() // Testeamos lo mismo que en el anterior solo que ahora hay que tener en cuenta que los items reducen el daño recibido.
         {
             Dwarf dwarf = new Dwarf("Albus");
             IDefensiveItem helmet = new Helmet();
@@ -48,7 +48,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void DwarfCureTest()
+        public void DwarfCureTest() // Testeamos que un dwarf que halla perdido vida la recupere con Cure.
         {
             Dwarf dwarf = new Dwarf("Albus");
             dwarf.ReceiveAttack(50);
@@ -58,7 +58,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void DwarfEquipAnAlreadyEquippedItem()
+        public void DwarfEquipAnAlreadyEquippedItem() // Testeamos que no se puedan repetir items en la lista de items.
         {
             Dwarf dwarf = new Dwarf("Albus");
             IOffensiveItem sword = new Sword();
@@ -67,6 +67,15 @@ namespace Test.Library
             List<IOffensiveItem> itemlist = new List<IOffensiveItem> { sword };
             List<IOffensiveItem> equipped = dwarf.OffensiveItems;
             Assert.AreEqual(itemlist, equipped);
+        }
+
+        [Test]
+        public void DwarfRemoveUnEquippedItem() // Testeamos que no salte una excepcion al intentar de remover un item que no se encuentre en la lista de items.
+        {
+            Dwarf dwarf = new Dwarf("Albus");
+            IOffensiveItem sword = new Sword();
+            dwarf.UnequipItem(sword);
+            Assert.Pass();
         }
     }
 }
