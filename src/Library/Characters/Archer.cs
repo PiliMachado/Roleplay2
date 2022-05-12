@@ -8,20 +8,49 @@ namespace RoleplayGame
 
         public string Name { get; set; }
         
-        public List<IDefensiveItems> defensiveItems {get; private set;} = new List<IDefensiveItems>();
-        public List<IOffensiveItems> offensiveItems {get; private set;} = new List<IOffensiveItems>();
+        public List<IDefensiveItem> DefensiveItems {get; private set;} = new List<IDefensiveItem>();
+        public List<IOffensiveItem> OffensiveItems {get; private set;} = new List<IOffensiveItem>();
 
         public Archer(string name)
         {
             this.Name = name;
         }
 
+        
+        public void EquipItem(IDefensiveItem item)
+        {
+            if(!this.DefensiveItems.Contains(item))
+            {
+                this.DefensiveItems.Add(item);
+            }
+        }
+        public void EquipItem(IOffensiveItem item)
+        {
+            if(!this.OffensiveItems.Contains(item))
+            {
+                this.OffensiveItems.Add(item);
+            }
+        }
+        public void UnequipItem(IOffensiveItem item)
+        {
+            if(this.OffensiveItems.Contains(item))
+            {
+                this.OffensiveItems.Remove(item);
+            }
+        }
+        public void UnequipItem(IDefensiveItem item)
+        {
+            if(this.DefensiveItems.Contains(item))
+            {
+                this.DefensiveItems.Remove(item);
+            }
+        }
         public int AttackValue
         {
             get
             {
                 int value = 0;
-                foreach(IOffensiveItems item in this.offensiveItems)
+                foreach(IOffensiveItem item in this.OffensiveItems)
                 {
                     value += item.AttackValue;
                 }
@@ -34,7 +63,7 @@ namespace RoleplayGame
             get
             {
                 int value = 0;
-                foreach(IDefensiveItems item in this.defensiveItems)
+                foreach(IDefensiveItem item in this.DefensiveItems)
                 {
                     value += item.DefenseValue;
                 }
