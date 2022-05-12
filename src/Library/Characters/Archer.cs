@@ -1,25 +1,31 @@
+using System.Collections.Generic;
+
 namespace RoleplayGame
 {
     public class Archer : ICharacter
     {
         private int health = 100;
 
+        public string Name { get; set; }
+        
+        public List<IDefensiveItems> defensiveItems {get; private set;} = new List<IDefensiveItems>();
+        public List<IOffensiveItems> offensiveItems {get; private set;} = new List<IOffensiveItems>();
+
         public Archer(string name)
         {
             this.Name = name;
         }
 
-        public string Name { get; set; }
-        
-        public Bow Bow { get; set; }
-
-        public Helmet Helmet { get; set; }
-
         public int AttackValue
         {
             get
             {
-                return Bow.AttackValue;
+                int value = 0;
+                foreach(IOffensiveItems item in this.offensiveItems)
+                {
+                    value += item.AttackValue;
+                }
+                return value;
             }
         }
 
@@ -27,7 +33,12 @@ namespace RoleplayGame
         {
             get
             {
-                return Helmet.DefenseValue;
+                int value = 0;
+                foreach(IDefensiveItems item in this.defensiveItems)
+                {
+                    value += item.DefenseValue;
+                }
+                return value;
             }
         }
 
